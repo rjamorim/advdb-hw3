@@ -3,7 +3,7 @@
 # Pedro Ferro Freitas - pff2108
 # Roberto Jose de Amorim - rja2139
 
-data_file = 'INTEGRATED-DATASET.csv'
+data_file = 'test-dataset.csv'  # INTEGRATED-DATASET.csv
 min_sup = 0.3
 min_conf = 0.5
 
