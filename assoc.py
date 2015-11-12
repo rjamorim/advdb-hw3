@@ -16,6 +16,7 @@ min_conf = 0.0
 
 
 class MiningAlgorithm(object):
+    # Object responsible for the association rules mining
 
     def __init__(self):
         self.elements = set()
@@ -29,13 +30,13 @@ class MiningAlgorithm(object):
         self.sorted_confidence_list = []
 
     def read_dataset(self, name):
-        # Read dataset file
+        # P1: Read and process dataset file.
         with open(name, 'rb') as csvfile:
             data = csv.reader(csvfile, delimiter=',')
             t_id = 0
             for row in data:
                 t_id += 1
-                # Compute number of elements of the transaction with the highest number of elements
+                # # Compute number of elements of the transaction with the largest number of elements
                 n_elements = len(row)
                 if n_elements > self.max_elements:
                     self.max_elements = n_elements
@@ -47,21 +48,24 @@ class MiningAlgorithm(object):
         self.n_transactions = t_id
 
     def association_rules_mining(self):
+        # P2: Algorithm core, calling the most important functions.
         # Compute L_1:
         for entry in sorted(self.elements):
             support = float(self.counts[(entry,)]) / self.n_transactions
             if support >= min_sup:
                 self.l_itemsets[1].append([entry])
-        # Compute L_2 - L_k:
-        # Maior itemset tem, no maximo, mesmo numero de elementos da transaction com o maior numero de elementos
+        # Compute L_k for k>1:
+        # # Largest itemset has, at most, number of elements equal to transaction with the largest number of elements
         for i in range(2, self.max_elements + 1):
             self.candidate_generation(i)
             self.support_update(i)
             self.compute_large_itemsets(i)
+            # Interrupt the loop if L_k is empty
             if len(self.l_itemsets[i]) == 0:
                 break
 
     def candidate_generation(self, iteration):
+        # P2-a: Generate new candidates from the large itemsets from last iteration.
         # Join step:
         for element1 in self.l_itemsets[iteration - 1]:
             for element2 in self.l_itemsets[iteration - 1]:
@@ -69,7 +73,6 @@ class MiningAlgorithm(object):
                     if element1[iteration - 2] < element2[iteration - 2]:
                         self.c_itemsets[iteration].append(element1 + element2[iteration - 2:])
         # print iteration, self.c_itemsets[iteration]
-
         # Prune step:
         for entry in self.c_itemsets[iteration]:
             for bkpoint in range(len(entry)):
@@ -82,6 +85,7 @@ class MiningAlgorithm(object):
                     break
 
     def support_update(self, iteration):
+        # P2-b: Calculate the support for the candidates in the k-th iteration.
         for t_id in self.transactions.keys():
             set1 = self.transactions[t_id]
             for entry in self.c_itemsets[iteration]:
@@ -90,16 +94,17 @@ class MiningAlgorithm(object):
                     self.counts[tuple(sorted(set1.intersection(set2)))] += 1
 
     def compute_large_itemsets(self, iteration):
-        # Compare candidates with threshold:
+        # P2-c: Determine the itemsets for the k-th iteration, with k elements.
         for entry in self.c_itemsets[iteration]:
             support = float(self.counts[tuple(entry)]) / self.n_transactions
+            # Compare support for each candidate with threshold
             if support >= min_sup:
                 self.l_itemsets[iteration].append(entry)
         # print iteration, self.l_itemsets[iteration]
 
     def print_sorted_results(self):
+        # P3: Print support and confidence in the desired format.
         # Priting Support:
-        # print '[pen], 100%'
         print '\n==Frequent itemsets (min_sup=%.0f%%)' % (100 * min_sup)
         support_list = []
         for iteration in self.l_itemsets.keys():
@@ -110,9 +115,8 @@ class MiningAlgorithm(object):
         for iteration, key, count in self.sorted_support_list:
             support = int(100. * count / self.n_transactions)
             print '[%s], %.0f%%' % (','.join(key), support)
-
+            # Format: '[pen], 100%'
         # Printing Confidence:
-        # print '[diary] => [pen] (Conf: 100.0%, Supp: 75%)'
         print '\n==High-confidence association rules (min_conf=%.0f%%)' % (100 * min_conf)
         confidence_list = []
         for key in self.l_itemsets[1]:
@@ -128,6 +132,7 @@ class MiningAlgorithm(object):
                 conf = int(100. * conf)
                 support = int(100. * count2 / self.n_transactions)
                 print '[%s] => [%s] (Conf: %.1f%%, Supp: %.0f%%)' % (key[0], key2[0], conf, support)
+                # Format: '[diary] => [pen] (Conf: 100.0%, Supp: 75%)'
 
 
 ARMalgo = MiningAlgorithm()
