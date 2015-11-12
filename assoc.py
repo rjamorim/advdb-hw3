@@ -7,8 +7,8 @@ import csv
 from collections import defaultdict
 
 data_file = 'test-dataset.csv'  # INTEGRATED-DATASET.csv
-min_sup = 0.7
-min_conf = 0.8
+min_sup = 0.0
+min_conf = 0.0
 
 # data_file = argv[2]
 # min_sup = float(argv[3])
@@ -52,6 +52,7 @@ class MiningAlgorithm(object):
             support = float(self.counts[(entry,)]) / self.n_transactions
             if support >= min_sup:
                 self.l_itemsets[1].append([entry])
+        # Compute L_2 - L_k:
         # Maior itemset tem, no maximo, mesmo numero de elementos da transaction com o maior numero de elementos
         for i in range(2, self.max_elements + 1):
             self.candidate_generation(i)
@@ -67,9 +68,18 @@ class MiningAlgorithm(object):
                 if element1[0:iteration - 2] == element2[0:iteration - 2]:
                     if element1[iteration - 2] < element2[iteration - 2]:
                         self.c_itemsets[iteration].append(element1 + element2[iteration - 2:])
-        # print 'candidates:', iteration, self.c_itemsets[iteration]
+        # print iteration, self.c_itemsets[iteration]
+
         # Prune step:
-        # self.c_itemsets[iteration].remove(a)
+        for entry in self.c_itemsets[iteration]:
+            for bkpoint in range(len(entry)):
+                subset = entry[:bkpoint] + entry[bkpoint + 1:]
+                if subset not in self.l_itemsets[iteration - 1]:
+                    print '\n', iteration, entry, subset, '\n'
+                    bkpoint2 = self.c_itemsets[iteration].index(entry)
+                    temp = self.c_itemsets[iteration][:bkpoint2] + self.c_itemsets[iteration][bkpoint2 + 1:]
+                    self.c_itemsets[iteration] = temp
+                    break
 
     def support_update(self, iteration):
         for t_id in self.transactions.keys():
@@ -85,6 +95,7 @@ class MiningAlgorithm(object):
             support = float(self.counts[tuple(entry)]) / self.n_transactions
             if support >= min_sup:
                 self.l_itemsets[iteration].append(entry)
+        # print iteration, self.l_itemsets[iteration]
 
     def print_sorted_results(self):
         # Priting Support:
