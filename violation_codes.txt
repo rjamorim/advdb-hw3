@@ -108,6 +108,6 @@
 22B	Toilet facility used by women does not have at least one covered garbage receptacle.
 22C	Bulb not shielded or shatterproof, in areas where there is extreme heat, temperature changes, or where accidental contact may occur.
 22E	ROP processing equipment not approved by DOHMH.
-22F	22F
-22G	22G
+22F	Misbranded; mislabeled packaged food products.
+22G	Possess, sell expanded polystyrene single service articles.
 99B	Other general violation.
