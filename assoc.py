@@ -7,8 +7,8 @@ import csv
 from collections import defaultdict
 
 data_file = 'test-dataset.csv'  # INTEGRATED-DATASET.csv
-min_sup = 0.0
-min_conf = 0.0
+min_sup = 0.7
+min_conf = 0.8
 
 # data_file = argv[2]
 # min_sup = float(argv[3])
@@ -125,13 +125,14 @@ class MiningAlgorithm(object):
                 if key2 > key:
                     count2 = self.counts[tuple(key+key2)]
                     conf = float(count2) / count
-                    confidence_list.append((key, key2, count2, conf))
+                    sup = float(count) / self.n_transactions
+                    confidence_list.append((key, key2, sup, conf))
         self.sorted_confidence_list = sorted(confidence_list, key=lambda entry: entry[3], reverse=True)
-        for key, key2, count2, conf in self.sorted_confidence_list:
-            if conf >= min_conf:
+        for key, key2, sup, conf in self.sorted_confidence_list:
+            if conf >= min_conf and sup > min_sup:
                 conf = int(100. * conf)
-                support = int(100. * count2 / self.n_transactions)
-                print '[%s] => [%s] (Conf: %.1f%%, Supp: %.0f%%)' % (key[0], key2[0], conf, support)
+                sup = int(100. * sup)
+                print '[%s] => [%s] (Conf: %.1f%%, Supp: %.0f%%)' % (key[0], key2[0], conf, sup)
                 # Format: '[diary] => [pen] (Conf: 100.0%, Supp: 75%)'
 
 
