@@ -1,0 +1,30 @@
+# Association Rules Mining - hw3
+# Advanced Database Systems
+# Pedro Ferro Freitas - pff2108
+# Roberto Jose de Amorim - rja2139
+
+import csv
+from collections import defaultdict
+from sys import argv
+
+data_file = argv[1]
+index = int(argv[2])   # 0
+data = int(argv[3])    # 10
+
+sets = defaultdict(set)
+
+with open(data_file, 'rb') as csvfile:
+    sourcedata = csv.reader(csvfile, delimiter=',')
+    for row in sourcedata:
+        if row[data] == '':
+            continue
+        sets[row[index]].add(row[data])
+
+output = file("INTEGRATED-DATASET.csv", "w")
+for key in sets.keys():
+    output.write(','.join(list(sets[key])) + "\n")
+
+output.flush()
+
+#print len(sets)
+
