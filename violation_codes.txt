@@ -36,6 +36,7 @@
 05D	Hand washing facility not provided in or near food preparation area and toilet room. Hot and cold running water at adequate pressure to enable cleanliness of employees not provided at facility. Soap and an acceptable hand-drying device not provided.
 05E	Toilet facility not provided for employees or for patrons when required.
 05F	Insufficient or no refrigerated or hot holding equipment to keep potentially hazardous foods at required temperatures.
+05G Separate, enclosed, properly equipped cleaning and service area not provided. (Mobile Vending Commissary)
 05H	No facilities available to wash, rinse and sanitize utensils and/or equipment.
 05I	Refrigeration used to implement HACCP plan not equipped with an electronic system that continuously monitors time and temperature.
 06A	Personal cleanliness inadequate. Outer garment soiled with possible contaminant.  Effective hair restraint not worn in an area where food is prepared.
@@ -64,12 +65,24 @@
 10H	Proper sanitization not provided for utensil ware washing operation.
 10I	Single service item reused, improperly stored, dispensed; not used when required.
 10J	Wash hands sign not posted at hand wash facility.
+15A Tobacco vending machine present where prohibited.
+15B Tobacco vending machine placed less than 25 feet from entrance to premises.
+15C Tobacco vending machine not visible to the operator, employee or agent.
+15D Durable sign with license number, expiration date, address and phone number not posted.
 15E	Out-of package sale of tobacco products observed.
+15F Employee under the age of 18 selling tobacco products without direct supervision of an adult retail dealer or dealer.
+15G Sale to minor observed.
 15H	Sign prohibiting sale of tobacco products to minors not conspicuously posted.
 15I	No Smoking and/or "Smoking Permitted" sign not conspicuously posted. Health warning not present on "Smoking Permitted"
 15J	Ashtray present in smoke-free area.
 15K	Operator failed to make good faith effort to inform smokers of the Smoke-free Act prohibition of smoking.
 15L	Smoke free workplace smoking policy inadequate, not posted or provided to employees.
+15M Use of tobacco product on school premises (at or below the 12th grade level) observed.
+15N Smoking permitted and/or allowed in smoking prohibited area under the operator’s control.
+15O Sale of herbal cigarettes to minors observed.
+15P No tobacco health warning and smoking cessation sign(s) are posted.
+15Q Tobacco health warning and smoking cessation sign(s) are obstructed and/or not prominently displayed.
+15R No large tobacco health warning and smoking cessation sign is posted where tobacco products are displayed; small sign(s) are not posted at each register or place of payment.
 15S	Flavored tobacco products sold or offered for sale.
 15T	Original label for tobacco products sold or offered for sale.
 16A	A food containing artificial trans fat, with 0.5 grams or more of trans fat per serving, is being stored, distributed, held for service, used in preparation of a menu item, or served.
@@ -77,13 +90,17 @@
 16C	Caloric content not posted on menus, menu boards or food tags, in a food service establishment that is 1 of 15 or more outlets operating the same type of business nationally under common ownership or control, or as a franchise or doing business under the same name, for each menu item that is served in portions, the size and content of which are standardized.
 16E	Caloric content range (minimum to maximum) not posted on menus and or menu boards for each flavor, variety and size of each menu item that is offered for sale in different flavors, varieties and sizes.
 16F	Specific caloric content or range thereof not posted on menus, menu boards or food tags for each menu item offered as a combination meal with multiple options that are listed as single items.
+18A Current valid permit, registration or other authorization to operate establishment not available.
 18B	Document issued by the Board of Health, Commissioner or Department unlawfully reproduced or altered.
 18C	Notice of the Department of Board of Health mutilated, obstructed, or removed.
 18D	Failure to comply with an Order of the Board of Health, Commissioner, or Department.
+18E Failure to report occurrences of suspected food borne illness to the Department.
 18F	Permit not conspicuously displayed.
 18G	Manufacture of frozen dessert not authorized on Food Service Establishment permit.
+18H Failure of event sponsor to exclude vendor without a current valid permit or registration
 20A	Food allergy information poster not conspicuously posted where food is being prepared or processed by food workers.
 20B	Food allergy information poster not posted in language understood by all food workers.
+20C Food allergy poster does not contain text provided or approved by Department.
 20D	Choking first aid poster not posted. "Alcohol and pregnancy" warning sign not posted. Resuscitation equipment: exhaled air resuscitation masks (adult & pediatric), latex gloves, sign not posted. Inspection report sign not posted.
 20E	Letter Grade or Grade Pending card not conspicuously posted and visible to passersby.
 20F	Current letter grade card not posted.
