@@ -7,7 +7,7 @@ import csv
 from collections import defaultdict
 from sys import argv
 
-data_file = argv[1]
+data_file = argv[1]    # DOHMH_New_York_City_Restaurant_Inspection_Results.csv
 index = int(argv[2])   # 0
 data = int(argv[3])    # 10
 

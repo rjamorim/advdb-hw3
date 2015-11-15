@@ -5,6 +5,7 @@
 
 import csv
 from collections import defaultdict
+from sys import argv
 
 data_file = 'INTEGRATED-DATASET.csv'  # test-dataset.csv
 min_sup = 0.4
