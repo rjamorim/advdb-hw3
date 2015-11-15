@@ -6,9 +6,9 @@
 import csv
 from collections import defaultdict
 
-data_file = 'test-dataset.csv'  # INTEGRATED-DATASET.csv
-min_sup = 0.7
-min_conf = 0.8
+data_file = 'INTEGRATED-DATASET.csv'  # test-dataset.csv
+min_sup = 0.4
+min_conf = 0.4
 
 # data_file = argv[2]
 # min_sup = float(argv[3])
@@ -78,7 +78,7 @@ class MiningAlgorithm(object):
             for bkpoint in range(len(entry)):
                 subset = entry[:bkpoint] + entry[bkpoint + 1:]
                 if subset not in self.l_itemsets[iteration - 1]:
-                    print '\n', iteration, entry, subset, '\n'
+                    # print '\n', iteration, entry, subset, '\n'
                     bkpoint2 = self.c_itemsets[iteration].index(entry)
                     temp = self.c_itemsets[iteration][:bkpoint2] + self.c_itemsets[iteration][bkpoint2 + 1:]
                     self.c_itemsets[iteration] = temp
