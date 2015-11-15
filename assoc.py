@@ -49,6 +49,7 @@ class MiningAlgorithm(object):
                         self.counts[(key,)] += 1
         except IOError:
             print "File not found!"
+            exit(1)
         self.n_transactions = t_id
 
     def association_rules_mining(self):

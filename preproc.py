@@ -22,6 +22,7 @@ try:
             sets[row[index]].add(row[data])
 except IOError:
     print "File not found!"
+    exit(1)
 
 output = file("INTEGRATED-DATASET.csv", "w")
 for key in sets.keys():
