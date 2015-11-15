@@ -7,9 +7,9 @@ import csv
 from collections import defaultdict
 from sys import argv
 
-data_file = 'INTEGRATED-DATASET.csv'  # test-dataset.csv
-min_sup = 0.4
-min_conf = 0.4
+data_file = 'test-dataset.csv' # 'INTEGRATED-DATASET.csv'  # test-dataset.csv
+min_sup = 0.0
+min_conf = 0.0
 
 # data_file = argv[2]
 # min_sup = float(argv[3])
@@ -126,7 +126,7 @@ class MiningAlgorithm(object):
                 if key2 > key:
                     count2 = self.counts[tuple(key+key2)]
                     conf = float(count2) / count
-                    sup = float(count) / self.n_transactions
+                    sup = float(count2) / self.n_transactions
                     confidence_list.append((key, key2, sup, conf))
         self.sorted_confidence_list = sorted(confidence_list, key=lambda entry: entry[3], reverse=True)
         for key, key2, sup, conf in self.sorted_confidence_list:
