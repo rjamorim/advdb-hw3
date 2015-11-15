@@ -11,9 +11,9 @@ from sys import argv
 # min_sup = 0.4
 # min_conf = 0.7
 
-data_file = argv[2]
-min_sup = float(argv[3])
-min_conf = float(argv[4])
+data_file = argv[1]
+min_sup = float(argv[2])
+min_conf = float(argv[3])
 
 
 class MiningAlgorithm(object):
