@@ -7,9 +7,9 @@ import csv
 from collections import defaultdict
 from sys import argv
 
-data_file = 'test-dataset.csv' # 'INTEGRATED-DATASET.csv'  # test-dataset.csv
-min_sup = 0.0
-min_conf = 0.0
+data_file = 'INTEGRATED-DATASET.csv'  # test-dataset.csv
+min_sup = 0.4
+min_conf = 0.7
 
 # data_file = argv[2]
 # min_sup = float(argv[3])
