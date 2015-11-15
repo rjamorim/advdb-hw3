@@ -13,12 +13,15 @@ data = int(argv[3])    # 10
 
 sets = defaultdict(set)
 
-with open(data_file, 'rb') as csvfile:
-    sourcedata = csv.reader(csvfile, delimiter=',')
-    for row in sourcedata:
-        if row[data] == '':
-            continue
-        sets[row[index]].add(row[data])
+try:
+    with open(data_file, 'rb') as csvfile:
+        sourcedata = csv.reader(csvfile, delimiter=',')
+        for row in sourcedata:
+            if row[data] == '':
+                continue
+            sets[row[index]].add(row[data])
+except IOError:
+    print "File not found!"
 
 output = file("INTEGRATED-DATASET.csv", "w")
 for key in sets.keys():

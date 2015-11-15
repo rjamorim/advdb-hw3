@@ -32,20 +32,23 @@ class MiningAlgorithm(object):
 
     def read_dataset(self, name):
         # P1: Read and process dataset file.
-        with open(name, 'rb') as csvfile:
-            data = csv.reader(csvfile, delimiter=',')
-            t_id = 0
-            for row in data:
-                t_id += 1
-                # # Compute number of elements of the transaction with the largest number of elements
-                n_elements = len(row)
-                if n_elements > self.max_elements:
-                    self.max_elements = n_elements
-                # Process each line of csv file
-                for key in row:
-                    self.elements.add(key)
-                    self.transactions[t_id].add(key)
-                    self.counts[(key,)] += 1
+        try:
+            with open(name, 'rb') as csvfile:
+                data = csv.reader(csvfile, delimiter=',')
+                t_id = 0
+                for row in data:
+                    t_id += 1
+                    # # Compute number of elements of the transaction with the largest number of elements
+                    n_elements = len(row)
+                    if n_elements > self.max_elements:
+                        self.max_elements = n_elements
+                    # Process each line of csv file
+                    for key in row:
+                        self.elements.add(key)
+                        self.transactions[t_id].add(key)
+                        self.counts[(key,)] += 1
+        except IOError:
+            print "File not found!"
         self.n_transactions = t_id
 
     def association_rules_mining(self):
