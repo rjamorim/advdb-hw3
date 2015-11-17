@@ -24,11 +24,11 @@ except IOError:
     print "File not found!"
     exit(1)
 
-output = file("INTEGRATED-DATASET.csv", "w")
-for key in sets.keys():
-    output.write(','.join(list(sets[key])) + "\n")
-
-output.flush()
-
-#print len(sets)
-
+try:
+    output = file("INTEGRATED-DATASET.csv", "w")
+    for key in sets.keys():
+        output.write(','.join(list(sets[key])) + "\n")
+    output.flush()
+except IOError:
+    print "Could not write output file. Aborting..."
+    exit(1)
