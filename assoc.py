@@ -143,6 +143,7 @@ class MiningAlgorithm(object):
                 conf = round(100. * conf, 1)
                 sup = round(100. * sup, 0)
                 result = ']['.join(list(temp2))
+                a = 1
                 print '[%s] => [%s] (Conf: %.1f%%, Supp: %.0f%%)' % (result, key, conf, sup)
                 # Format: '[diary] => [pen] (Conf: 100.0%, Supp: 75%)'
 
