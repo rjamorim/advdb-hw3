@@ -131,17 +131,18 @@ class MiningAlgorithm(object):
                 count2 = self.counts[tuple(key2)]
                 sup = float(count2) / self.n_transactions
                 for key in key2:
-                    count = self.counts[(key,)]
+                    temp = set(key2)
+                    temp.remove(key)
+                    temp2 = sorted(temp)
+                    count = self.counts[tuple(temp2)]
                     conf = float(count2) / count
-                    confidence_list.append((key, key2, sup, conf))
+                    confidence_list.append((key, temp2, sup, conf))
         self.sorted_confidence_list = sorted(confidence_list, key=lambda entry: entry[3], reverse=True)
-        for key, key2, sup, conf in self.sorted_confidence_list:
+        for key, temp2, sup, conf in self.sorted_confidence_list:
             if conf >= min_conf and sup > min_sup:
                 conf = round(100. * conf, 1)
                 sup = round(100. * sup, 0)
-                temp = set(key2)
-                temp.remove(key)
-                result = ']['.join(list(temp))
+                result = ']['.join(list(temp2))
                 print '[%s] => [%s] (Conf: %.1f%%, Supp: %.0f%%)' % (result, key, conf, sup)
                 # Format: '[diary] => [pen] (Conf: 100.0%, Supp: 75%)'
 
