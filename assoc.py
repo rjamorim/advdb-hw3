@@ -7,7 +7,7 @@ import csv
 from collections import defaultdict
 from sys import argv
 
-# data_file = 'INTEGRATED-DATASET.csv'  # test-dataset.csv
+# data_file = 'INTEGRATED-DATASET.csv'
 # min_sup = 0.4
 # min_conf = 0.7
 
@@ -48,7 +48,7 @@ class MiningAlgorithm(object):
                         self.transactions[t_id].add(key)
                         self.counts[(key,)] += 1
         except IOError:
-            print "File not found!"
+            print "File not found or unreadable"
             exit(1)
         self.n_transactions = t_id
 
@@ -77,13 +77,11 @@ class MiningAlgorithm(object):
                 if element1[0:iteration - 2] == element2[0:iteration - 2]:
                     if element1[iteration - 2] < element2[iteration - 2]:
                         self.c_itemsets[iteration].append(element1 + element2[iteration - 2:])
-        # print iteration, self.c_itemsets[iteration]
         # Prune step:
         for entry in self.c_itemsets[iteration]:
             for bkpoint in range(len(entry)):
                 subset = entry[:bkpoint] + entry[bkpoint + 1:]
                 if subset not in self.l_itemsets[iteration - 1]:
-                    # print '\n', iteration, entry, subset, '\n'
                     bkpoint2 = self.c_itemsets[iteration].index(entry)
                     temp = self.c_itemsets[iteration][:bkpoint2] + self.c_itemsets[iteration][bkpoint2 + 1:]
                     self.c_itemsets[iteration] = temp
@@ -105,7 +103,6 @@ class MiningAlgorithm(object):
             # Compare support for each candidate with threshold
             if support >= min_sup:
                 self.l_itemsets[iteration].append(entry)
-        # print iteration, self.l_itemsets[iteration]
 
     def print_sorted_results(self):
         # P3: Print support and confidence in the desired format.
@@ -120,7 +117,6 @@ class MiningAlgorithm(object):
         for iteration, key, count in self.sorted_support_list:
             support = int(100. * count / self.n_transactions)
             print '[%s], %.0f%%' % (','.join(key), support)
-            # Format: '[pen], 100%'
         # Printing Confidence:
         print '\n==High-confidence association rules (min_conf=%.0f%%)' % (100 * min_conf)
         confidence_list = []
@@ -145,7 +141,6 @@ class MiningAlgorithm(object):
                 result = ']['.join(list(temp2))
                 a = 1
                 print '[%s] => [%s] (Conf: %.1f%%, Supp: %.0f%%)' % (result, key, conf, sup)
-                # Format: '[diary] => [pen] (Conf: 100.0%, Supp: 75%)'
 
 
 ARMalgo = MiningAlgorithm()

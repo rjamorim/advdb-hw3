@@ -21,7 +21,7 @@ try:
                 continue
             sets[row[index]].add(row[data])
 except IOError:
-    print "File not found!"
+    print "File not found or unreadable"
     exit(1)
 
 try:
