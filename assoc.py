@@ -47,10 +47,10 @@ class MiningAlgorithm(object):
                         self.elements.add(key)
                         self.transactions[t_id].add(key)
                         self.counts[(key,)] += 1
+                self.n_transactions = t_id
         except IOError:
             print "File not found or unreadable"
             exit(1)
-        self.n_transactions = t_id
 
     def association_rules_mining(self):
         # P2: Algorithm core, calling the most important functions.
